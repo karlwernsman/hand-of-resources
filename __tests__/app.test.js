@@ -84,19 +84,19 @@ describe('dog routes', () => {
       ]
     `);
   });
-  // it('POST /dogs should create a new dog', async () => {
-  //   const newDog = {
-  //     name: 'Katie',
-  //     age: 11,
-  //     breed: 'Chihuahua',
-  //   };
-  //   const resp = await (await request(app).post('/dogs')).setEncoding(newDog);
-  //   expect(resp.status).toBe(200);
-  //   expect(resp.body).toEqual({
-  //     id: expect.any(String),
-  //     ...newDog,
-  //   });
-  // });
+  it('POST /dogs should create a new dog', async () => {
+    const newDog = {
+      name: 'Katie',
+      age: 11,
+      breed: 'Chihuahua',
+    };
+    const resp = await request(app).post('/dogs').send(newDog);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newDog,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
