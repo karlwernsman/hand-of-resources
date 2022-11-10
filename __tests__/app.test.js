@@ -97,6 +97,20 @@ describe('dog routes', () => {
       ...newDog,
     });
   });
+  it('PUT /dogs/:id should update an existing dog', async () => {
+    const resp = await await request(app).put('/dogs/1').send({
+      breed: 'Staffy Mix',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.breed).toBe('Staffy Mix');
+  });
+  it('DELETE /dogs/:id should delete a dog', async () => {
+    const resp = await request(app).delete('/dogs/1');
+    expect(resp.status).toBe(200);
+
+    const dogResp = await request(app).get('/dogs/1');
+    expect(dogResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
