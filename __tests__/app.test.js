@@ -18,6 +18,16 @@ describe('dog routes', () => {
       breed: expect.any(String),
     });
   });
+  it('GET /dogs:id should return a dogs details', async () => {
+    const resp = await request(app).get('/dogs');
+    expect(resp.status).toBe(200);
+    expect(resp.body[0]).toEqual({
+      id: '1',
+      name: 'Lottie',
+      age: 4,
+      breed: 'Pit Mix',
+    });
+  });
   afterAll(() => {
     pool.end();
   });
