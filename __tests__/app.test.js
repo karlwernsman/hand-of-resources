@@ -11,23 +11,92 @@ describe('dog routes', () => {
     const resp = await request(app).get('/dogs');
     expect(resp.status).toBe(200);
     expect(resp.body.length).toBe(5);
-    expect(resp.body[0]).toEqual({
-      id: expect.any(String),
-      name: expect.any(String),
-      age: expect.any(Number),
-      breed: expect.any(String),
-    });
+    expect(resp.body).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "age": 4,
+          "breed": "Pit Mix",
+          "id": "1",
+          "name": "Lottie",
+        },
+        Object {
+          "age": 10,
+          "breed": "Pit Mix",
+          "id": "2",
+          "name": "Rudy",
+        },
+        Object {
+          "age": 2,
+          "breed": "Min Pin",
+          "id": "3",
+          "name": "Laikia",
+        },
+        Object {
+          "age": 4,
+          "breed": "German Shorthair",
+          "id": "4",
+          "name": "Lucy",
+        },
+        Object {
+          "age": 12,
+          "breed": "Super Mutt",
+          "id": "5",
+          "name": "Rascal",
+        },
+      ]
+    `);
   });
   it('GET /dogs:id should return a dogs details', async () => {
     const resp = await request(app).get('/dogs');
     expect(resp.status).toBe(200);
-    expect(resp.body[0]).toEqual({
-      id: '1',
-      name: 'Lottie',
-      age: 4,
-      breed: 'Pit Mix',
-    });
+    expect(resp.body).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "age": 4,
+          "breed": "Pit Mix",
+          "id": "1",
+          "name": "Lottie",
+        },
+        Object {
+          "age": 10,
+          "breed": "Pit Mix",
+          "id": "2",
+          "name": "Rudy",
+        },
+        Object {
+          "age": 2,
+          "breed": "Min Pin",
+          "id": "3",
+          "name": "Laikia",
+        },
+        Object {
+          "age": 4,
+          "breed": "German Shorthair",
+          "id": "4",
+          "name": "Lucy",
+        },
+        Object {
+          "age": 12,
+          "breed": "Super Mutt",
+          "id": "5",
+          "name": "Rascal",
+        },
+      ]
+    `);
   });
+  // it('POST /dogs should create a new dog', async () => {
+  //   const newDog = {
+  //     name: 'Katie',
+  //     age: 11,
+  //     breed: 'Chihuahua',
+  //   };
+  //   const resp = await (await request(app).post('/dogs')).setEncoding(newDog);
+  //   expect(resp.status).toBe(200);
+  //   expect(resp.body).toEqual({
+  //     id: expect.any(String),
+  //     ...newDog,
+  //   });
+  // });
   afterAll(() => {
     pool.end();
   });
