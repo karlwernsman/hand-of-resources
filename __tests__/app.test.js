@@ -29,7 +29,7 @@ describe('dog routes', () => {
           "age": 2,
           "breed": "Min Pin",
           "id": "3",
-          "name": "Laikia",
+          "name": "Laika",
         },
         Object {
           "age": 4,
@@ -67,7 +67,7 @@ describe('dog routes', () => {
           "age": 2,
           "breed": "Min Pin",
           "id": "3",
-          "name": "Laikia",
+          "name": "Laika",
         },
         Object {
           "age": 4,

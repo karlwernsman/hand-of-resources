@@ -14,6 +14,6 @@ INSERT INTO
 VALUES
     ('Lottie', 4, 'Pit Mix'),
     ('Rudy', 10, 'Pit Mix'),
-    ('Laikia', 2, 'Min Pin'),
+    ('Laika', 2, 'Min Pin'),
     ('Lucy', 4, 'German Shorthair'),
     ('Rascal', 12, 'Super Mutt');
