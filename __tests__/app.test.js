@@ -316,6 +316,18 @@ describe('flower routes', () => {
       ]
     `);
   });
+  it('GET /flowers:id should return a flowers details', async () => {
+    const resp = await request(app).get('/flowers/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "id": "1",
+        "name": "Daisy",
+        "soil_needs": "Well-drained",
+        "sun_needs": "Full Sun",
+      }
+    `);
+  });
 });
 
 afterAll(() => {
