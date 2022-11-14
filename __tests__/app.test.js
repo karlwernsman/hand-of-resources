@@ -348,6 +348,13 @@ describe('flower routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.name).toBe('Daisy!');
   });
+  it('DELETE /flowers/:id should delete a flower', async () => {
+    const resp = await request(app).delete('/flowers/1');
+    expect(resp.status).toBe(200);
+
+    const flowerResp = await request(app).get('/flowers/1');
+    expect(flowerResp.status).toBe(404);
+  });
 });
 
 afterAll(() => {
