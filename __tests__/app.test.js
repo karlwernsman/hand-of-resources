@@ -238,6 +238,19 @@ describe('mountain routes', () => {
       }
     `);
   });
+  it('POST /mountains should create a new mountain', async () => {
+    const newMountain = {
+      name: 'Dhaulagiri I',
+      height_in_feet: 26795,
+      location: 'Nepal',
+    };
+    const resp = await request(app).post('/mountains').send(newMountain);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newMountain,
+    });
+  });
 });
 
 afterAll(() => {
