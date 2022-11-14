@@ -72,7 +72,7 @@ describe('dog routes', () => {
     });
   });
   it('PUT /dogs/:id should update an existing dog', async () => {
-    const resp = await await request(app).put('/dogs/1').send({
+    const resp = await request(app).put('/dogs/1').send({
       breed: 'Staffy Mix',
     });
     expect(resp.status).toBe(200);
@@ -155,11 +155,18 @@ describe('cat routes', () => {
       color: 'Gray',
     };
     const resp = await request(app).post('/cats').send(newCat);
-    // expect(resp.status).toBe(200);
+    expect(resp.status).toBe(200);
     expect(resp.body).toEqual({
       id: expect.any(String),
       ...newCat,
     });
+  });
+  it('PUT /cats/:id should update an existing cat', async () => {
+    const resp = await request(app).put('/cats/1').send({
+      age: 3,
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.age).toBe(3);
   });
 });
 
