@@ -47,41 +47,15 @@ describe('dog routes', () => {
     `);
   });
   it('GET /dogs:id should return a dogs details', async () => {
-    const resp = await request(app).get('/dogs');
+    const resp = await request(app).get('/dogs/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "age": 4,
-          "breed": "Pit Mix",
-          "id": "1",
-          "name": "Lottie",
-        },
-        Object {
-          "age": 10,
-          "breed": "Pit Mix",
-          "id": "2",
-          "name": "Rudy",
-        },
-        Object {
-          "age": 2,
-          "breed": "Min Pin",
-          "id": "3",
-          "name": "Laika",
-        },
-        Object {
-          "age": 4,
-          "breed": "German Shorthair",
-          "id": "4",
-          "name": "Lucy",
-        },
-        Object {
-          "age": 12,
-          "breed": "Super Mutt",
-          "id": "5",
-          "name": "Rascal",
-        },
-      ]
+      Object {
+        "age": 4,
+        "breed": "Pit Mix",
+        "id": "1",
+        "name": "Lottie",
+      }
     `);
   });
   it('POST /dogs should create a new dog', async () => {
