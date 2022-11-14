@@ -111,7 +111,59 @@ describe('dog routes', () => {
     const dogResp = await request(app).get('/dogs/1');
     expect(dogResp.status).toBe(404);
   });
-  afterAll(() => {
-    pool.end();
+});
+
+describe('cat routes', () => {
+  beforeEach(() => {
+    return setup(pool);
   });
+  it('GET /cats should return a list of cats', async () => {
+    const resp = await request(app).get('/cats');
+    expect(resp.status).toBe(200);
+    expect(resp.body.length).toBe(6);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "age": 4,
+          "color": "Tortiouse",
+          "id": "1",
+          "name": "Scooter",
+        },
+        Object {
+          "age": 8,
+          "color": "Black",
+          "id": "2",
+          "name": "Simon",
+        },
+        Object {
+          "age": 6,
+          "color": "Black and White",
+          "id": "3",
+          "name": "Harry",
+        },
+        Object {
+          "age": 1,
+          "color": "Tabby",
+          "id": "4",
+          "name": "Dino",
+        },
+        Object {
+          "age": 7,
+          "color": "Orange",
+          "id": "5",
+          "name": "Harold",
+        },
+        Object {
+          "age": 20,
+          "color": "Cream",
+          "id": "6",
+          "name": "Ghost",
+        },
+      ]
+    `);
+  });
+});
+
+afterAll(() => {
+  pool.end();
 });
