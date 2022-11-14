@@ -177,6 +177,57 @@ describe('cat routes', () => {
   });
 });
 
+describe('mountain routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+  it('GET /mountains should return a list of mountains', async () => {
+    const resp = await request(app).get('/mountains');
+    expect(resp.status).toBe(200);
+    expect(resp.body.length).toBe(6);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "height_in_feet": 29035,
+          "id": "1",
+          "location": "Nepal/Tibet",
+          "name": "Everest",
+        },
+        Object {
+          "height_in_feet": 28250,
+          "id": "2",
+          "location": "Pakistan/China",
+          "name": "K2",
+        },
+        Object {
+          "height_in_feet": 28169,
+          "id": "3",
+          "location": "India/Nepal",
+          "name": "Kanchenjunga",
+        },
+        Object {
+          "height_in_feet": 27940,
+          "id": "4",
+          "location": "Nepal/Tibet",
+          "name": "Lhotse I",
+        },
+        Object {
+          "height_in_feet": 27766,
+          "id": "5",
+          "location": "Nepal/Tibet",
+          "name": "Makalu I",
+        },
+        Object {
+          "height_in_feet": 26906,
+          "id": "6",
+          "location": "Nepal/Tibet",
+          "name": "Cho Oyu",
+        },
+      ]
+    `);
+  });
+});
+
 afterAll(() => {
   pool.end();
 });

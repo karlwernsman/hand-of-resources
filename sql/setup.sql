@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS dogs;
 DROP TABLE IF EXISTS cats;
+DROP TABLE IF EXISTS mountains;
 
 CREATE TABLE dogs (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -35,3 +36,20 @@ VALUES
     ('Dino', 1, 'Tabby'),
     ('Harold', 7, 'Orange'),
     ('Ghost', 20, 'Cream');
+
+CREATE TABLE mountains (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    height_in_feet INT NOT NULL,
+    location VARCHAR NOT NULL
+);
+
+INSERT INTO 
+    mountains (name, height_in_feet, location)
+VALUES
+    ('Everest', 29035, 'Nepal/Tibet'),
+    ('K2', 28250, 'Pakistan/China'),
+    ('Kanchenjunga', 28169, 'India/Nepal'),
+    ('Lhotse I', 27940, 'Nepal/Tibet'),
+    ('Makalu I', 27766, 'Nepal/Tibet'),
+    ('Cho Oyu', 26906, 'Nepal/Tibet');
