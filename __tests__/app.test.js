@@ -328,6 +328,19 @@ describe('flower routes', () => {
       }
     `);
   });
+  it('POST /flowers should create a new flower', async () => {
+    const newFlower = {
+      name: 'Hyacinth',
+      sun_needs: 'Full Sun',
+      soil_needs: 'Well-drained',
+    };
+    const resp = await request(app).post('/flowers').send(newFlower);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newFlower,
+    });
+  });
 });
 
 afterAll(() => {
