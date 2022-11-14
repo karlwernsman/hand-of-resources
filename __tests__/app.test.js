@@ -136,6 +136,18 @@ describe('cat routes', () => {
       ]
     `);
   });
+  it('GET /cats:id should return a cats details', async () => {
+    const resp = await request(app).get('/cats/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "age": 4,
+        "color": "Tortiouse",
+        "id": "1",
+        "name": "Scooter",
+      }
+    `);
+  });
 });
 
 afterAll(() => {
