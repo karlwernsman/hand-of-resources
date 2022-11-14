@@ -267,6 +267,57 @@ describe('mountain routes', () => {
   });
 });
 
+describe('flower routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+  it('GET /flowers should return a list of flowers', async () => {
+    const resp = await request(app).get('/flowers');
+    expect(resp.status).toBe(200);
+    expect(resp.body.length).toBe(6);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "id": "1",
+          "name": "Daisy",
+          "soil_needs": "Well-drained",
+          "sun_needs": "Full Sun",
+        },
+        Object {
+          "id": "2",
+          "name": "Periwinkle",
+          "soil_needs": "Droughty",
+          "sun_needs": "Full Sun/Partial Shade",
+        },
+        Object {
+          "id": "3",
+          "name": "Dahlia",
+          "soil_needs": "Well-drained",
+          "sun_needs": "Full Sun",
+        },
+        Object {
+          "id": "4",
+          "name": "Foxglove",
+          "soil_needs": "Well-drained",
+          "sun_needs": "All Sun Types",
+        },
+        Object {
+          "id": "5",
+          "name": "Pearly Everlasting",
+          "soil_needs": "Damp",
+          "sun_needs": "Full Sun/Partial Shade",
+        },
+        Object {
+          "id": "6",
+          "name": "Moonflower",
+          "soil_needs": "Well-drained",
+          "sun_needs": "Full Sun",
+        },
+      ]
+    `);
+  });
+});
+
 afterAll(() => {
   pool.end();
 });

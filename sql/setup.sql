@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS dogs;
 DROP TABLE IF EXISTS cats;
 DROP TABLE IF EXISTS mountains;
+DROP TABLE IF EXISTS flowers;
 
 CREATE TABLE dogs (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -53,3 +54,20 @@ VALUES
     ('Lhotse I', 27940, 'Nepal/Tibet'),
     ('Makalu I', 27766, 'Nepal/Tibet'),
     ('Cho Oyu', 26906, 'Nepal/Tibet');
+
+CREATE TABLE flowers (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    sun_needs VARCHAR NOT NULL,
+    soil_needs VARCHAR NOT NULL
+);
+
+INSERT INTO 
+    flowers (name, sun_needs, soil_needs)
+VALUES
+    ('Daisy', 'Full Sun', 'Well-drained'),
+    ('Periwinkle', 'Full Sun/Partial Shade', 'Droughty'),
+    ('Dahlia', 'Full Sun', 'Well-drained'),
+    ('Foxglove', 'All Sun Types', 'Well-drained'),
+    ('Pearly Everlasting', 'Full Sun/Partial Shade', 'Damp'),
+    ('Moonflower', 'Full Sun', 'Well-drained');
