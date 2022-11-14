@@ -262,7 +262,7 @@ describe('mountain routes', () => {
     const resp = await request(app).delete('/mountains/1');
     expect(resp.status).toBe(200);
 
-    const mountainResp = await request(app).get('/mounßtains/1');
+    const mountainResp = await request(app).get('/mountains/1');
     expect(mountainResp.status).toBe(404);
   });
 });
