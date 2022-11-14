@@ -251,6 +251,13 @@ describe('mountain routes', () => {
       ...newMountain,
     });
   });
+  it('PUT /mountains/:id should update an existing mountain', async () => {
+    const resp = await request(app).put('/mountains/1').send({
+      name: 'Mt Everest',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toBe('Mt Everest');
+  });
 });
 
 afterAll(() => {
