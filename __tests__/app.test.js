@@ -341,6 +341,13 @@ describe('flower routes', () => {
       ...newFlower,
     });
   });
+  it('PUT /flowers/:id should update an existing flower', async () => {
+    const resp = await request(app).put('/flowers/1').send({
+      name: 'Daisy!',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toBe('Daisy!');
+  });
 });
 
 afterAll(() => {
