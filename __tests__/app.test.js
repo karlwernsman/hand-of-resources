@@ -258,6 +258,13 @@ describe('mountain routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.name).toBe('Mt Everest');
   });
+  it('DELETE /mountains/:id should delete a mountain', async () => {
+    const resp = await request(app).delete('/mountains/1');
+    expect(resp.status).toBe(200);
+
+    const mountainResp = await request(app).get('/mounßtains/1');
+    expect(mountainResp.status).toBe(404);
+  });
 });
 
 afterAll(() => {
