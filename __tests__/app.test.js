@@ -226,6 +226,18 @@ describe('mountain routes', () => {
       ]
     `);
   });
+  it('GET /mountains:id should return a mountains details', async () => {
+    const resp = await request(app).get('/mountains/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "height_in_feet": 29035,
+        "id": "1",
+        "location": "Nepal/Tibet",
+        "name": "Everest",
+      }
+    `);
+  });
 });
 
 afterAll(() => {
