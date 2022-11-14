@@ -168,6 +168,13 @@ describe('cat routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.age).toBe(3);
   });
+  it('DELETE /cats/:id should delete cat', async () => {
+    const resp = await request(app).delete('/cats/1');
+    expect(resp.status).toBe(200);
+
+    const catResp = await request(app).get('/cats/1');
+    expect(catResp.status).toBe(404);
+  });
 });
 
 afterAll(() => {
