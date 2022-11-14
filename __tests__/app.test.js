@@ -148,6 +148,19 @@ describe('cat routes', () => {
       }
     `);
   });
+  it('POST /cats should create a new cat', async () => {
+    const newCat = {
+      name: 'Edna',
+      age: 3,
+      color: 'Gray',
+    };
+    const resp = await request(app).post('/cats').send(newCat);
+    // expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newCat,
+    });
+  });
 });
 
 afterAll(() => {
