@@ -406,6 +406,18 @@ describe('color routes', () => {
       ]
     `);
   });
+  it('GET /colors:id should return a colors details', async () => {
+    const resp = await request(app).get('/colors/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "id": "1",
+        "meaning": "Passion",
+        "name": "Red",
+        "thing": "Apple",
+      }
+    `);
+  });
 });
 
 afterAll(() => {
