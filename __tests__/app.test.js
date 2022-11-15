@@ -431,6 +431,13 @@ describe('color routes', () => {
       ...newColor,
     });
   });
+  it('PUT /colors:id should update an existing color', async () => {
+    const resp = await request(app).put('/colors/1').send({
+      meaning: 'Love',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.meaning).toBe('Love');
+  });
 });
 
 afterAll(() => {
