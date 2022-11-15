@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS dogs;
 DROP TABLE IF EXISTS cats;
 DROP TABLE IF EXISTS mountains;
 DROP TABLE IF EXISTS flowers;
+DROP TABLE IF EXISTS colors;
 
 CREATE TABLE dogs (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -71,3 +72,20 @@ VALUES
     ('Foxglove', 'All Sun Types', 'Well-drained'),
     ('Pearly Everlasting', 'Full Sun/Partial Shade', 'Damp'),
     ('Moonflower', 'Full Sun', 'Well-drained');
+
+CREATE TABLE colors (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    meaning VARCHAR NOT NULL,
+    thing VARCHAR NOT NULL
+);
+
+INSERT INTO 
+    colors (name, meaning, thing)
+VALUES
+    ('Red', 'Passion', 'Apple'),
+    ('Pink', 'Happiness', 'Cat nose'),
+    ('Green', 'Growth', 'Grass'),
+    ('Blue', 'Peace', 'Sky'),
+    ('White', 'Purity', 'Cloud'),
+    ('Brown', 'Reliable', 'Chocolate');

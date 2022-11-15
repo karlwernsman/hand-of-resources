@@ -357,6 +357,57 @@ describe('flower routes', () => {
   });
 });
 
+describe('color routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+  it('GET /colors should return a list of colors', async () => {
+    const resp = await request(app).get('/colors');
+    expect(resp.status).toBe(200);
+    expect(resp.body.length).toBe(6);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "id": "1",
+          "meaning": "Passion",
+          "name": "Red",
+          "thing": "Apple",
+        },
+        Object {
+          "id": "2",
+          "meaning": "Happiness",
+          "name": "Pink",
+          "thing": "Cat nose",
+        },
+        Object {
+          "id": "3",
+          "meaning": "Growth",
+          "name": "Green",
+          "thing": "Grass",
+        },
+        Object {
+          "id": "4",
+          "meaning": "Peace",
+          "name": "Blue",
+          "thing": "Sky",
+        },
+        Object {
+          "id": "5",
+          "meaning": "Purity",
+          "name": "White",
+          "thing": "Cloud",
+        },
+        Object {
+          "id": "6",
+          "meaning": "Reliable",
+          "name": "Brown",
+          "thing": "Chocolate",
+        },
+      ]
+    `);
+  });
+});
+
 afterAll(() => {
   pool.end();
 });
