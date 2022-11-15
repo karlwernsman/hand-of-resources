@@ -418,6 +418,19 @@ describe('color routes', () => {
       }
     `);
   });
+  it('POST /colors should create a new color', async () => {
+    const newColor = {
+      name: 'Yellow',
+      meaning: 'Bright',
+      thing: 'Sunflower',
+    };
+    const resp = await request(app).post('/colors').send(newColor);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newColor,
+    });
+  });
 });
 
 afterAll(() => {
